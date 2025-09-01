@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * 
@@ -20,7 +21,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name="seq_usuario", sequenceName="seq_usuario", allocationSize = 1, initialValue = 1)
 /*nome lógico do gerador; nome do gerador no banco de dados; aloca de 1 em 1; primeiro valor da sequência*/
-
+@Table(name = "usuario_model")
 public class UsuarioModel implements Serializable /*padrão do java*/{
 	
 	private static final long serialVersionUID = 1L; //padrão do java
