@@ -87,7 +87,7 @@ public class GreetingsController {
    
    @PostMapping(value = "salvar")
    @ResponseBody//retorna o corpo da resposta, (o corpo é como se fosse uma caixinha com os dados dentro) e geralmente é em JSON
-   public ResponseEntity<UsuarioModel> salvar(@RequestBody UsuarioModel usuarioModel) {//@RequestBody recebe o corpo da resposta (dados geralmente em JSON) e os transforma em um objeto real
+   public ResponseEntity<UsuarioModel> salvar(@RequestBody UsuarioModel usuarioModel) {//@RequestBody recebe o corpo da resposta (dados geralmente em JSON) e os transforma em um objeto real e passa para UsuarioModel
 	   
 	   UsuarioModel usuario = usuarioRepository.save(usuarioModel);//salva meus dados no banco
 	   

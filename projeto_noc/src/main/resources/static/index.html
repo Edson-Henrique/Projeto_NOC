@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RESP API</title>
+
+ <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+
+<form action="" id="formularioCadastroUsuario">
+
+<div class="mb-3">
+  <label for="id" class="form-label">ID:</label>
+  <input type="text" class="form-control" id="id" readonly="readonly" placeholder="ID gerado automaticamente">
+</div>
+<!-- div é um conteiner
+     label descreve o campo input
+     input é um campo de entrada
+     o for vincula o label ao campo de entreda com mesmo nome (id) -->
+
+<div class="mb-3">
+  <label for="nome" class="form-label">NOME:</label>
+  <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
+</div>
+
+<div class="mb-3">
+  <label for="idade" class="form-label">IDADE:</label>
+  <input type="number" class="form-control" id="idade" placeholder="Informe a idade">
+</div>
+
+<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
+<button type="button" class="btn btn-secondary" onclick="document.getElementById('formularioCadastroUsuario').reset();">Novo</button>
+
+</form>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- jQuery me permite escrever comandos em javascript com menos código -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+function salvarUsuario(){
+	
+	var id = $("#id").val();
+	var nome = $("#nome").val();
+	var idade = $("#idade").val();
+	
+	/*AJAX é uma técnica que permite que uma página web se comunique com o servidor sem recarregar a página inteira,
+	pois o navegador envia os dados para o servidor em segundo plano, e a resposta chega e aparece na mesma página*/
+	
+	//é uma receita de bolo:
+		
+		$.ajax({ //chamada AJAX sem jQuery
+			method: "POST", //por se tratar do método salvar, que é um do tipo POST
+			url: "salvar", //mapeamento do meu método
+			data: JSON.stringify({id : id, nome : nome, idade: idade}),//meus dados: 1 - parâmtros do objeto : 2 - valor do formulário
+			contentType: "application/json; charset=utf-8",//tipo dos dados
+			success: function (response){//se der certo, será enviada a resposta
+				$("#id").val(response.id);//faz escrever meu id na tela
+				alert("Dados salvos com sucesso!");
+			}
+		}).fail(function (xhr, status, errorThrow){//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
+			alert("Erro! Não conseguimos salvar os dados: " + xhr.responseText);
+		});
+	
+	//O objetivo final é que, ao clique do botão "salvar", este método envie um JSON para o endpoint "salvar"
+	
+}
+
+</script>
+
+</body>
+</html>
