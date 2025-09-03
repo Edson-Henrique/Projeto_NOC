@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+html{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 3%;
+}
+
+#divTabelaDados{
+	height: 250px;
+	overflow: scroll;
+}

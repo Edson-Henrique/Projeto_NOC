@@ -57,7 +57,7 @@ public class GreetingsController {
     @ResponseStatus(HttpStatus.OK)
     public String greetingText(@PathVariable String name) {
     	
-    	UsuarioModel usuarioModel = new UsuarioModel();
+    	UsuarioModel usuarioModel = new UsuarioModel(); 
     	usuarioModel.setNome(name);
     	usuarioRepository.save(usuarioModel);//mandei salvar no banco o nome que peguei na URL
     	
@@ -102,7 +102,7 @@ public class GreetingsController {
 	   
 	   usuarioRepository.deleteById(id);//deleta meu usuário no banco, através do ID
 	   
-	   return new ResponseEntity<String>("Usuário deletado com sucesso", HttpStatus.OK);//retorna um texto, mais o status HTTP 200 (ok)
+	   return new ResponseEntity<String>("Usuário deletado com sucesso!", HttpStatus.OK);//retorna um texto, mais o status HTTP 200 (ok)
      
 	}
    
@@ -135,7 +135,7 @@ public class GreetingsController {
   
    @GetMapping(value = "buscarPeloNome")
    @ResponseBody//retorna o corpo da resposta, (o corpo é como se fosse uma caixinha com os dados dentro) e geralmente é em JSON
-   public ResponseEntity<List<UsuarioModel>> buscarPeloNome(@RequestParam(name = "nome") String nome) {//@RequestParam pega parâmetros que vem da URL ou no corpo de requisição, desde que sejam formulários ou dados simples
+   public ResponseEntity<List<UsuarioModel>> buscarPeloNome(@RequestParam(name = "nome") String nome) {//@RequestBody recebe um json -  @RequestParam recebe um parâmetro
 	   //(name = "id") é para reforçar a informação
 	   
 	    List<UsuarioModel> usuarioModel = usuarioRepository.buscarPorNome(nome.trim().toUpperCase());//busca usuário pelo nome - trim() retira o espaço
