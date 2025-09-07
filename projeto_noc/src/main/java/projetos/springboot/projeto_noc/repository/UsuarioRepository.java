@@ -11,10 +11,9 @@ import projetos.springboot.projeto_noc.model.UsuarioModel;
 
 /**
  * 
- * @Repository marca minha interface como um repositório
- * Meu repositório é quem faz as operações com o banco de dados
- * 
- * @Repository transforma minha interface em uma bean, como outras anotaçõse (@Service, Controller)
+ * @Repository marca minha interface como um repositório;
+ * - Meu repositório é quem faz as operações com o banco de dados;
+ * - Transforma minha interface em uma bean, como outras anotaçõse fazem com suas classes(@Service, Controller, Entity)
  * 
  * */
 
@@ -26,7 +25,7 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long>{
  * UsuarioModel é minha classe persistente, que representa o banco de dados;
  * Long é o tipo da chave primário (id é um Long) 
  * 
- * @Query me permite fazer um comando sql personalizado
+ * @Query me permite fazer um comando sql personalizado;
  * 
  * */
 	

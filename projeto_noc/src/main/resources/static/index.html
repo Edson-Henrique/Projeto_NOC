@@ -10,57 +10,50 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-	
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<link rel="stylesheet" type="text/css" href="css/style.css"> 
 
 </head>
 <body>
 
-<h1>REST API com CRUD completo usando Spring Boot </h1>
+	<h1>REST API com CRUD completo usando Spring Boot</h1>
 
 	<form action="" id="formularioCadastroUsuario">
 
 		<div class="mb-3">
-			<label for="id" class="form-label">ID:</label> <input type="text"
-				class="form-control" id="id" readonly="readonly"
-				placeholder="ID gerado automaticamente">
+			<label for="id" class="form-label">ID:</label> 
+			<input type="text" class="form-control" id="id" readonly="readonly" placeholder="ID gerado automaticamente">
 		</div>
 	<!-- div é um conteiner
-     label descreve o campo input
-     input é um campo de entrada
-     o for vincula o label ao campo de entreda com mesmo nome (id) -->
+    - label descreve o campo input
+    - input é um campo de entrada
+    - o for vincula o label ao campo de entreda com mesmo nome (id) -->
 
 		<div class="mb-3">
-			<label for="nome" class="form-label">NOME:</label> <input type="text"
-				class="form-control" id="nome" placeholder="Informe o nome">
+			<label for="nome" class="form-label">NOME:</label> 
+			<input type="text" class="form-control" id="nome" placeholder="Informe o nome">
 		</div>
 
 		<div class="mb-3">
-			<label for="idade" class="form-label">IDADE:</label> <input
-				type="number" class="form-control" id="idade"
-				placeholder="Informe a idade">
+			<label for="idade" class="form-label">IDADE:</label> 
+			<input type="number" class="form-control" id="idade" placeholder="Informe a idade">
 		</div>
 
 
 	</form>
 
 	<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
-	<button type="button" class="btn btn-secondary"
-		onclick="document.getElementById('formularioCadastroUsuario').reset();">Novo</button> <!-- esse reset limpa os campos do formulário -->
-	<button type="button" class="btn btn-success" data-bs-toggle="modal"
-		data-bs-target="#modalPesquisar">Pesquisar</button>
+	<button type="button" class="btn btn-secondary" onclick="document.getElementById('formularioCadastroUsuario').reset();">Novo</button><!-- esse reset limpa os campos do formulário -->
+	<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalPesquisar">Pesquisar</button><!-- chama a tela modal -->
 	<button type="button" class="btn btn-danger" onclick="botaoDeletarTelaInicial()">Deletar</button>
 
-	<!-- MODAL -->
-	<div class="modal fade" id="modalPesquisar" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- TELA MODAL -->
+	<div class="modal fade" id="modalPesquisar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Buscar por
-						usuário</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
+					<h5 class="modal-title" id="exampleModalLabel">Buscar por usuário</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<form>
@@ -72,25 +65,25 @@
 					</form>
 
 					<div id="divTabelaDados">
-					<!-- tabela bootstrap -->
-					<table class="table" id="tabelaDados">
-						<thead><!-- cabeçalho -->
-							<tr><!-- linha -->
-								<th scope="col">ID</th><!-- coluna -->
-								<th scope="col">Nome</th>
-								<th scope="col">Editar</th>
-								<th scope="col">Deletar</th>
-							</tr>
-						</thead>
-						<tbody><!-- corpo -->
-							
-						</tbody>
-					</table>
-				</div>
+					
+						<!-- TABLE -->
+						<table class="table" id="tabelaDados"><!-- tabela bootstrap -->
+							<thead><!-- cabeçalho -->
+								<tr><!-- linha -->
+									<th scope="col">ID</th><!-- coluna -->
+									<th scope="col">Nome</th>
+									<th scope="col">Editar</th>
+									<th scope="col">Deletar</th>
+								</tr>
+							</thead>
+							<tbody><!-- corpo -->
+							<!--  -->
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
 				</div>
 			</div>
 		</div>
@@ -99,8 +92,7 @@
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-		crossorigin="anonymous"></script>
-	<!-- jQuery me permite escrever comandos em javascript com menos código -->
+		crossorigin="anonymous"></script> <!-- jQuery me permite escrever comandos em javascript com menos código -->
 
 	<!-- Bootstrap JS -->
 	<script
@@ -109,40 +101,38 @@
 		crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-		function salvarUsuario() {
+		function salvarUsuario() { //acionado pelo botão SALVAR
 
-			var id = $("#id").val();
-			var nome = $("#nome").val();
-			var idade = $("#idade").val();
-			
-			if(nome == null || nome.trim() == '' ){
+			var id = $("#id").val(); //"#id" é o id do meu input ID - val() resgata o valor contido dentro deste input
+			var nome = $("#nome").val(); //"#nome" é o id do meu input NOME - val() resgata o valor contido dentro deste input
+			var idade = $("#idade").val(); //"#idade" é o id do meu input IDADE - val() resgata o valor contido dentro deste input
+
+			if (nome == null || nome.trim() == '') {//validação para verificar se o nome está nulo ou se está vazio
 				$("#nome").focus();//foca no campo
 				alert("Informe o nome!");
 				return;
 			}
-			
-			if(idade == null || idade.trim() == '' ){
+
+			if (idade == null || idade.trim() == '') {//validação para verificar se a idade está nula ou se está vazio
 				$("#idade").focus();//foca no campo
 				alert("Informe a idade!");
 				return;
 			}
-			
 
-			/*AJAX é uma técnica que permite que uma página web se comunique com o servidor sem recarregar a página inteira,
-			pois o navegador envia os dados para o servidor em segundo plano, e a resposta chega e aparece na mesma página*/
-
-			//é uma receita de bolo:
-			$.ajax({ //chamada AJAX sem jQuery
-				method : "POST", //por se tratar do método salvar, que é um do tipo POST
-				url : "salvar", //mapeamento do meu método
-				data : JSON.stringify({
-					id : id,//meus dados: 1 - parâmtros do objeto : 2 - valor do formulário
+			/*AJAX é uma técnica que permite que uma página web se comunique com o servidor, em segundo plano, e por isso 
+			a página não recarrega, e as informações chegam na mesma*/
+			//ajax é uma receita de bolo:
+			$.ajax({ //chamada AJAX com jQuery
+				method : "POST", //por se tratar do endpoint salvar, que é um do tipo POST
+				url : "salvar", //mapeamento do meu endpoint
+				data : JSON.stringify({//converte os dados de JS para JSON, para serem enviados no corpo requisição feita ao endpoint 
+					id : id,//1 -parâmtros do objeto : 2 - valor do formulário
 					nome : nome,
 					idade : idade
 				}),
 				contentType : "application/json; charset=utf-8",//tipo dos dados
-				success : function(response) {//se der certo, será enviada a resposta
-					$("#id").val(response.id);//faz escrever meu id na tela
+				success : function(response) {//esse response, é o retorno do meu endpoint "salvar"
+					$("#id").val(response.id);//"#id" é o id do meu input ID - val(com este campo preenchido) escreve o valor do parâmetro na tela
 					alert("Dados salvos com sucesso!");
 				}
 			}).fail(
@@ -151,96 +141,110 @@
 								+ xhr.responseText);
 					});
 
-			//O objetivo final é que, ao clique do botão "salvar", este método envie um JSON para o endpoint "salvar"
+			/*O objetivo final é que, ao clicar no botão "salvar", este chame uma função JS, que possui um ajax, que irá capturar os dados 
+			do formulário, depois irá convertê-los para json, para então os enviar, no corpo da requisição, para o endpoint "salvar"; 
+			este por sua vez, recebe o json, converte-o para um objeto, em seguida conecta-se ao banco de dados e salva aquele objeto;
+			por último, meu endpoint retorna a este - que antes será traduzido para json pelo @ResponseBody, para o ajax, no parâmetro 
+			"response" do método "function()"; e será este mesmo ajax, o responsável por colocar os dados na tela. 
+			*/ 
 
 		}
-		
-		function buscarUsuario(){
-		
-			var nome = $("#nomeBuscar").val();//pega o conteúdo do input Buscar
-			
-			if(nome != null && nome.trim() != ''){//nome.trim() é caso não seja inserido nada
-				$.ajax({ //chamada AJAX sem jQuery
-					method : "GET", //por se tratar do método buscarPorNome, que é um do tipo GET
-					url : "buscarPeloNome", //mapeamento do meu método
-					data : "nome=" + nome,// "nome" é o nome do parâmetro do endponint "buscarPeloNome" - nome é o valor da variável da função js 
-					success : function(response) {//se der certo, será enviada a resposta
-						$("#tabelaDados > tbody > tr").remove();//entra na tebela, depois na linha, depois na coluna e limpa os dados que já estiverem sendo exibidos lá
-					
-						for(var i = 0; i < response.length; i++){//como o método "buscarPorNome" retorna uma lista, devo percorre-la
-							$("#tabelaDados > tbody").append("<tr id='idLinha'><td>"+response[i].id+"</td><td>"+response[i].nome+"</td><td><button type='button' class='btn btn-primary' onclick='colocarEmEdicao("+response[i].id+")'>Ver</button></td><td><button type='button' class='btn btn-danger' onclick='deletarUsuario("+response[i].id+")'>Deletar</button></td></tr>");
-							//na linha acima, tenho 4 colunas: ID, Nome, botão VER, botão DELETAR
-						}
-					}
-				}).fail(
-						function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
-							alert("Erro ao buscar usuário pelo nome!: "
-									+ xhr.responseText);
-						});
-			}
-			
-		}
-		
-		function colocarEmEdicao(id){
-			
-			
-				$.ajax({ //chamada AJAX sem jQuery
-					method : "GET", //por se tratar do método buscarPorNome, que é um do tipo GET
-					url : "buscarPeloId", //mapeamento do meu método
-					data : "id=" + id, //"id" é o nome do parâmetro do endponint "buscarPeloId" - id é o valor do parâmtro da função js
-					success : function(response) {
-						$("#id").val(response.id); //preeche os campos na tela  
-						$("#nome").val(response.nome); //val() - se estiver vazio, pega os valores dos campos da tela; porém se estiver carregando um parâmtro com ele, acaba por inserir seu valor nos campos da tela
-						$("#idade").val(response.idade);
-	
-						$("#modalPesquisar").modal("hide");//esconde o modal quando eu clico em "ver"
-						
-					}
-					
-				}).fail(
-						function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
-							alert("Erro ao buscar usuário pelo id!"
-									+ xhr.responseText);
-						});
-			}
-		
-		function deletarUsuario(id){
 
-			if(confirm("Deseja mesmo deletar?")){
-			
-			$.ajax({ //chamada AJAX sem jQuery
-				method : "DELETE", //por se tratar do método buscarPorNome, que é um do tipo GET
-				url : "deletar", //mapeamento do meu método
+		function buscarUsuario() {//acionado pelo botão BUSCAR da tela modal
+
+			var nome = $("#nomeBuscar").val();//"#nomeBuscar" é o id do meu input NOME da tela modal - val() resgata o valor contido dentro deste input
+
+			if (nome != null && nome.trim() != '') {//validação para verificar se o nome está nulo ou se está vazio
+				$
+						.ajax(
+								{ //chamada AJAX com jQuery
+									method : "GET", //por se tratar do endpoint buscarPeloNome, que é um do tipo GET
+									url : "buscarPeloNome", //mapeamento do meu endpoint
+									data : "nome=" + nome,// "nome" é o nome do parâmetro do endponint "buscarPeloNome" - nome é o valor da variável js 
+									//como é um GET, os parâmtros não precisam ser convertidos para json, mas passão como query string na url;
+									success : function(response) {//se der certo, será enviada a resposta
+										$("#tabelaDados > tbody > tr").remove();//entra na tebela, depois na linha, e limpa os dados lá estiverem sendo exibidos 
+
+										for (var i = 0; i < response.length; i++) {//como o endpoint "buscarPorNome" retorna uma lista, devo percorre-la
+											$("#tabelaDados > tbody")
+													.append(//entro no corpo da tabela escrevo linhas e colunas
+															"<tr id='idLinha'><td>"// na linha...
+																	+ response[i].id//na 1° coluna: coloco o id do usuário
+																	+ "</td><td>"
+																	+ response[i].nome//na 2° coluna: coloco o nome do usuário
+																	+ "</td><td><button type='button' class='btn btn-primary' onclick='colocarEmEdicao("
+																	+ response[i].id//na 3° coluna: coloco o botão VER (que chama a função colocarEmEdicao(id) - já passando o "id" contido no "response" na posição "i" - response[i].id)
+																	+ ")'>Ver</button></td><td><button type='button' class='btn btn-danger' onclick='deletarUsuario("
+																	+ response[i].id//na 4° coluna: coloco o botão DELETAR (que chama a função deletarUsuario(id) - já passando o "id" contido no "response" na posição "i" - response[i].id)
+																	+ ")'>Deletar</button></td></tr>");
+											//na linha acima, tenho 4 colunas: ID, Nome, botão VER, botão DELETAR
+										}
+									}
+								}).fail(
+								function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
+									alert("Erro ao buscar usuário pelo nome!: "
+											+ xhr.responseText);
+								});
+			}
+
+		}
+
+		function colocarEmEdicao(id) {//chamado pelo botão VER
+
+			$.ajax({ //chamada AJAX com jQuery
+				method : "GET", //por se tratar do método buscarPeloId, que é um do tipo GET
+				url : "buscarPeloId", //mapeamento do meu endpoint
 				data : "id=" + id, //"id" é o nome do parâmetro do endponint "buscarPeloId" - id é o valor do parâmtro da função js
-				success : function(response) {
-					alert(response);		
-					
-					$('#idLinha').remove();
+				//como é um GET, os parâmtros não precisam ser convertidos para json, mas passão como query string na url;
+				success : function(response) {//esse response, é o retorno do meu endpoint "salvar"
+					$("#id").val(response.id); //"#id" é o id do meu input ID - val(com este campo preenchido) escreve o valor do parâmetro na tela  
+					$("#nome").val(response.nome); //val() - se estiver vazio, pega os valores dos campos da tela; porém se estiver carregando um parâmtro com ele, acaba por inserir seu valor nos campos da tela
+					$("#idade").val(response.idade);
+					$("#modalPesquisar").modal("hide");//esconde o modal quando eu clico no botão VER 
+
 				}
-				
-			}).fail(
-					function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
-						alert("Erro ao deletar usuário pelo id!"
-								+ xhr.responseText);
-					});
-			
+
+			}).fail(function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
+				alert("Erro ao buscar usuário pelo id!" + xhr.responseText);
+			});
+		}
+
+		function deletarUsuario(id) {//chamado pelo botão DELETAR da tela modal
+
+			if (confirm("Deseja mesmo deletar?")) {//exibe uma confirmação na tela 
+
+				$.ajax({ //chamada AJAX com jQuery
+					method : "DELETE", //por se tratar do método "deletar"", que é um do tipo DELETE
+					url : "deletar", //mapeamento do meu endpoint
+					data : "id=" + id, //"id" é o nome do parâmetro do endponint "DELETAR" - id é o valor do parâmtro da função js
+					//como é um GET, os parâmtros não precisam ser convertidos para json, mas passão como query string na url;
+					success : function(response) {//esse response, é o retorno do meu endpoint "salvar"
+						alert(response);//exibe o response/retorno na tela - neste caso, meu retorno é uma String
+
+						$('#idLinha').remove();//remove a linha que contém os dados do usuário recém deletado impressos na tela
+					}
+
+				}).fail(
+						function(xhr, status, errorThrow) {//xhr: traz detalhes da resposta; status: status http; errorthrow: mensagem de erro
+							alert("Erro ao deletar usuário pelo id!"
+									+ xhr.responseText);
+						});
+
 			}
 
 		}
-		
-		function botaoDeletarTelaInicial(){
-			var id = $("#id").val();//pega o id do campo id da tela
-			
-			if(id != null && id.trim() != ''){
-				deletarUsuario(id);
-				document.getElementById('formularioCadastroUsuario').reset();	
-			}else{
+
+		function botaoDeletarTelaInicial() {//chamado pelo botão DELETAR da tela inicial
+			var id = $("#id").val();//"#id" é o id do meu input ID - val() resgata o valor contido dentro deste input
+
+			if (id != null && id.trim() != '') {//verifica se o id é diferente de nulo e se não está vazio
+				deletarUsuario(id);//chamo a função "deletarUsuario(id)" para deletar o usuário para min 
+				document.getElementById('formularioCadastroUsuario').reset();//limpa os inputs do formulário
+			} else {
 				alert("Não há nenhum usuário a ser deletado!");
 			}
-			
+
 		}
-		
-		
 	</script>
 
 </body>
